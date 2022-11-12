@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useUserStore } from '../../redux/hooks/useUser'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import './Login.css'
 
 export default function Login() {
   const initialValues = {
@@ -27,14 +28,16 @@ export default function Login() {
     setStateForm({ loading: true, error: false })
     const { email, password } = values
     axios
-      .post(`http://${process.env.REACT_APP_API_URL}/users/login`, { email, password })
+      .post(`http://${process.env.REACT_APP_API_URL}/users/login`, {
+        email,
+        password
+      })
       .then((res) => {
         setStateForm({ loading: false, error: false })
         if (res.status === 200 && res.data.error !== true) {
-            console.log(res)
-            setUser(email)
-        }
-        else {
+          console.log(res)
+          setUser(email)
+        } else {
           setStateForm((p) => {
             return { ...p, error: true }
           })
@@ -56,10 +59,28 @@ export default function Login() {
     formik
 
   return (
-    <div> 
+    <div className="app">
       <div>
-        <section>
-          <h1>Bienvenido</h1>          
+        <div className="web-preview-header">
+          <div className="color-stripe top-stripe">
+            <div
+              className="color-stripe-bar"
+              style={{ backgroundColor: 'rgb(0, 168, 152)' }}
+            ></div>
+            <div
+              className="color-stripe-bar"
+              style={{ backgroundColor: 'rgb(255, 192, 14)' }}
+            ></div>
+            <div
+              className="color-stripe-bar"
+              style={{ backgroundColor: 'rgb(0, 168, 152)' }}
+            ></div>
+            <div className="web-preview-header-logo"></div>
+            <div className="web-preview-header-spacer"></div>
+          </div>
+        </div>
+        <section style={{width: "100vw"}}>
+          <h1>Bienvenido</h1>
           <form onSubmit={handleSubmit}>
             <label htmlFor="email">
               Correo
@@ -73,9 +94,7 @@ export default function Login() {
                 autoComplete="email"
               />
             </label>
-            {errors.email && touched.email && (
-              <div>{errors.email}</div>
-            )}
+            {errors.email && touched.email && <div>{errors.email}</div>}
             <label htmlFor="password">
               Contraseña
               <input
@@ -94,15 +113,13 @@ export default function Login() {
             <button type="submit">
               {stateForm.loading ? 'Cargando...' : 'Iniciar Sesión'}
             </button>
-            {stateForm.error && (
-              <p> Credenciales invalidas</p>
-            )}
-          </form>         
+            {stateForm.error && <p> Credenciales invalidas</p>}
+          </form>
           <p>
             ¿Aún no tienes una cuenta?<span> </span>
             <a href="/register">Crea una</a>
           </p>
-        </section>       
+        </section>
       </div>
     </div>
   )
