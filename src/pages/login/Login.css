@@ -2,7 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: roboto;
+    font-family: roboto;    
+}
+
+body {
+  
 }
 
 .app {
@@ -22,43 +26,107 @@
     padding: 4px 20px 0;
     flex-direction: row;
     align-items: center;
-}
-
-.top-stripe {
+  }
+  
+  .top-stripe {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: 4px;
     z-index: 100000;
-}
-
-.color-stripe {
+  }
+  
+  .color-stripe {
     flex: 1 1;
     display: flex;
     flex-direction: row;
     align-items: stretch;
-}
-.color-stripe-bar {
+  }
+  .color-stripe-bar {
     flex: 1;
     box-shadow: inset 0 -1px rgba(0, 0, 0, 0.05);
   }
-
-.web-preview-header-logo {
-    width: 100px;
-    background: url(https://previewer-assets.adalo.com/static/media/logo.7ff019c0.svg) no-repeat 0;
-    height: 60px;
-}
+  
+  .web-preview-header-logo {
+    width: 65px;
+    background: url('logo.svg') no-repeat 0;
+    height: 65px;
+    background-size: 65px 65px;
+  }
 
 .web-preview-header-spacer {
-    flex: 1 1;
+  flex: 1 1;
 }
 
 .web-renderer-wrapper {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
 }
+
+.main-section {
+  background: #00A898;  
+  display: 'flex';
+  flex-direction: 'column';
+  width: 100vw;
+  align-items: 'center';
+  height: 95%;
+}
+
+input[type="text"],
+input[type="password"] {
+  height: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding-left: 5px;  
+}
+
+input[type="submit"] {
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    background: #00A898;      
+    border: 1px solid #00A898;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+
+  input[type="submit"]:hover {
+    background: #000098;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .login-form {
+    background-color: white;
+    padding: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+  } 
+  
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+
+  .title {
+    font-size: 25px;
+    margin-bottom: 20px;
+    margin: 0 auto;
+    text-align: center;
+    color:#00A898;
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 10px;
+  }
