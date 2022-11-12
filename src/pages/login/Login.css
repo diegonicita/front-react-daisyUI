@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: roboto;
 }
 
 .app {
@@ -38,6 +39,11 @@
     flex-direction: row;
     align-items: stretch;
 }
+.color-stripe-bar {
+    flex: 1;
+    box-shadow: inset 0 -1px rgba(0, 0, 0, 0.05);
+  }
+
 .web-preview-header-logo {
     width: 100px;
     background: url(https://previewer-assets.adalo.com/static/media/logo.7ff019c0.svg) no-repeat 0;

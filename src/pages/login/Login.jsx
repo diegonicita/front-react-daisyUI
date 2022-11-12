@@ -75,15 +75,23 @@ export default function Login() {
               className="color-stripe-bar"
               style={{ backgroundColor: 'rgb(0, 168, 152)' }}
             ></div>
-            <div className="web-preview-header-logo"></div>
-            <div className="web-preview-header-spacer"></div>
           </div>
+          <div className="web-preview-header-logo"></div>
+          <div className="web-preview-header-spacer"></div>
         </div>
-        <section style={{width: "100vw"}}>
-          <h1>Bienvenido</h1>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="email">
-              Correo
+        <section
+          style={{ display: 'flex', flexDirection: 'column', width: '100vw', alignItems: "center" }}
+        >
+          <br />        
+          <br />      
+          <br />      
+          <form
+            onSubmit={handleSubmit}
+            style={{ padding: '0.5rem', width: '400px', border: '1px solid black', display: 'flex', flexDirection: 'column', alignItems: "center", gap: "1rem", borderRadius: '10px' }}
+            >
+            <h1>Bienvenido</h1>
+            <label htmlFor="email" style={{display: "flex", gap: "0.5rem", flexDirection: "column"}}>
+              <strong>Correo</strong>
               <input
                 type="text"
                 name="email"
@@ -91,12 +99,13 @@ export default function Login() {
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                autoComplete="email"
+                autoComplete="email"     
+                style={{paddingLeft: "0.3rem"}}           
               />
             </label>
             {errors.email && touched.email && <div>{errors.email}</div>}
-            <label htmlFor="password">
-              Contraseña
+            <label htmlFor="password" style={{display: "flex", gap: "0.5rem", flexDirection:"column"}}>
+              <strong>Contraseña</strong>
               <input
                 type="password"
                 name="password"
@@ -105,6 +114,7 @@ export default function Login() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 autoComplete="current-password"
+                style={{paddingLeft: "0.3rem"}}
               />
             </label>
             {errors.password && touched.password && (
@@ -114,11 +124,11 @@ export default function Login() {
               {stateForm.loading ? 'Cargando...' : 'Iniciar Sesión'}
             </button>
             {stateForm.error && <p> Credenciales invalidas</p>}
-          </form>
           <p>
             ¿Aún no tienes una cuenta?<span> </span>
-            <a href="/register">Crea una</a>
+            <a href="/register">Crea una cuenta</a>
           </p>
+          </form>
         </section>
       </div>
     </div>
