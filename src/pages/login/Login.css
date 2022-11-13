@@ -24,6 +24,7 @@
   border-radius: 10px;
 } 
 
+.login-form input[type="email"],
 .login-form input[type="text"],
 input[type="password"] {
   height: 25px;
@@ -43,7 +44,9 @@ input[type="password"] {
   }
 
   .login-form input[type="submit"]:hover {
-    background: #000098;
+    background: rgb(255, 192, 14);
+    border: 1px solid rgb(255, 192, 14);
+    color: black;
   }
 
   .login-form label {        

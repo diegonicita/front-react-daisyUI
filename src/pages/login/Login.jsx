@@ -6,6 +6,7 @@ import * as yup from 'yup'
 import { Link } from 'react-router-dom'
 import Header from '../../components/Header'
 import './Login.css'
+import { onSetToken } from '../../redux/slices'
 
 export default function Login() {
   const initialValues = {
@@ -14,7 +15,7 @@ export default function Login() {
   }
 
   const [stateForm, setStateForm] = useState({ loading: false, error: false })
-  const { user, setUser } = useUserStore()
+  const { user, setUser, setToken } = useUserStore()
 
   const validationSchema = yup.object().shape({
     email: yup
@@ -39,6 +40,7 @@ export default function Login() {
         if (res.status === 200 && res.data.error !== true) {
           console.log(res)
           setUser(email)
+          setToken(res.data.token)
         } else {
           setStateForm((p) => {
             return { ...p, error: true }
@@ -66,10 +68,10 @@ export default function Login() {
         <Header />
         <section className="login-main-section">
           <form onSubmit={handleSubmit} className="login-form">
-            <div className="title">Log In</div>
+            <div className="title">Ingresa</div>
             <div className="input-container">
               <label htmlFor="email">
-                <strong>Correo</strong>
+                Correo
                 <input
                   type="text"
                   name="email"
@@ -86,7 +88,7 @@ export default function Login() {
             </div>
             <div className="input-container">
               <label htmlFor="password">
-                <strong>Contraseña</strong>
+                Contraseña
                 <input
                   type="password"
                   name="password"
