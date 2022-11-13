@@ -3,6 +3,8 @@ import axios from 'axios'
 import { useUserStore } from '../../redux/hooks/useUser'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import { Link } from 'react-router-dom'
+import Header from '../../components/Header'
 import './Login.css'
 
 export default function Login() {
@@ -59,48 +61,14 @@ export default function Login() {
     formik
 
   return (
-    <div className="app">
+    <div className="login-container">
       <div>
-        <div className="web-preview-header">
-          <div className="color-stripe top-stripe">
-            <div
-              className="color-stripe-bar"
-              style={{ backgroundColor: 'rgb(255, 192, 14)' }}
-              ></div>
-            <div
-              className="color-stripe-bar"
-              style={{ backgroundColor: 'rgb(238, 77, 48)' }}
-            ></div>
-            <div
-              className="color-stripe-bar"
-              style={{ backgroundColor: 'rgb(0, 168, 152)' }}
-            ></div>
-          </div>
-          <div className="web-preview-header-logo"></div>
-          <div className="web-preview-header-spacer"></div>
-        </div>
-        <section className="main-section"
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: '100vw',
-            alignItems: 'center'
-          }}
-        >
-          <br />
-          <br />
-          <br />
+        <Header />
+        <section className="login-main-section">
           <form onSubmit={handleSubmit} className="login-form">
             <div className="title">Log In</div>
             <div className="input-container">
-              <label
-                htmlFor="email"
-                style={{
-                  display: 'flex',
-                  gap: '0.5rem',
-                  flexDirection: 'column'
-                }}
-              >
+              <label htmlFor="email">
                 <strong>Correo</strong>
                 <input
                   type="text"
@@ -113,18 +81,11 @@ export default function Login() {
                 />
               </label>
               {errors.email && touched.email && (
-                <div className="error">{errors.email}</div>
+                <div className="error-frontend">{errors.email}</div>
               )}
             </div>
             <div className="input-container">
-              <label
-                htmlFor="password"
-                style={{
-                  display: 'flex',
-                  gap: '0.5rem',
-                  flexDirection: 'column'
-                }}
-              >
+              <label htmlFor="password">
                 <strong>Contraseña</strong>
                 <input
                   type="password"
@@ -137,17 +98,19 @@ export default function Login() {
                 />
               </label>
               {errors.password && touched.password && (
-                <div className="error">{errors.password}</div>
+                <div className="error-frontend">{errors.password}</div>
               )}
             </div>
             <div className="button-container">
-              <input type="submit" value='Enviar'/>              
+              <input type="submit" value="Enviar" />
             </div>
-            {stateForm.error && <p> Credenciales invalidas</p>}
+            {stateForm.error && (
+              <p className="error-backend"> Credenciales invalidas</p>
+            )}
             <br />
             <p>
               ¿Aún no tienes una cuenta?<span> </span>
-              <a href="/register">Crea una cuenta</a>
+              <Link to="/register">Crea una cuenta</Link>
             </p>
           </form>
         </section>
