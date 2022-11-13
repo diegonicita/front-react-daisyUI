@@ -94,7 +94,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -106,10 +106,22 @@
     <ellipse
        style="opacity:0.997;fill:#03a596;fill-opacity:1;fill-rule:evenodd;stroke-width:0.0929188"
        id="path10-6-3"
-       cx="145.97383"
-       cy="116.18182"
+       cx="141.16298"
+       cy="116.98363"
        rx="18.462198"
        ry="17.660389" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15.9581px;line-height:1.25;font-family:'Greek Diner Inline TT';-inkscape-font-specification:'Greek Diner Inline TT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.997;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.48617"
+       x="141.90523"
+       y="120.78514"
+       id="text2877-8"
+       transform="scale(1.0059358,0.99409922)"><tspan
+         sodipodi:role="line"
+         id="tspan2875-5"
+         x="141.90523"
+         y="120.78514"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15.9581px;font-family:'Greek Diner Inline TT';-inkscape-font-specification:'Greek Diner Inline TT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke-width:1.48617">d</tspan></text>
     <ellipse
        style="opacity:0.997;fill:#ee4d30;fill-opacity:1;fill-rule:evenodd;stroke-width:0.128005"
        id="path10"
@@ -117,6 +129,18 @@
        cy="117.50578"
        rx="25.143934"
        ry="24.609396" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:23.4892px;line-height:1.25;font-family:'Greek Diner Inline TT';-inkscape-font-specification:'Greek Diner Inline TT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.997;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.18755"
+       x="98.719177"
+       y="147.75771"
+       id="text2877"
+       transform="scale(1.1742062,0.85163918)"><tspan
+         sodipodi:role="line"
+         id="tspan2875"
+         x="98.719177"
+         y="147.75771"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:23.4892px;font-family:'Greek Diner Inline TT';-inkscape-font-specification:'Greek Diner Inline TT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke-width:2.18755">T</tspan></text>
     <circle
        style="opacity:0.997;fill:#fbbe15;fill-opacity:1;fill-rule:evenodd;stroke-width:0.257295"
        id="path10-6"
@@ -125,27 +149,15 @@
        r="50" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.3209px;line-height:1.25;font-family:'Greek Diner Inline TT';-inkscape-font-specification:'Greek Diner Inline TT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.997;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.51997"
-       x="100.1619"
-       y="128.63498"
-       id="text2877"
-       transform="scale(1.0534385,0.94927232)"><tspan
-         sodipodi:role="line"
-         id="tspan2875"
-         x="100.1619"
-         y="128.63498"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.3209px;font-family:'Greek Diner Inline TT';-inkscape-font-specification:'Greek Diner Inline TT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke-width:1.51997">Tech</tspan></text>
-    <text
-       xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:87.89px;line-height:1.25;font-family:'Greek Diner Inline TT';-inkscape-font-specification:'Greek Diner Inline TT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.19726"
-       x="26.845732"
-       y="145.80536"
+       x="2.4524035"
+       y="158.98663"
        id="text886"
-       transform="scale(1.0036077,0.99640527)"><tspan
+       transform="matrix(0.98219475,-0.20620837,0.20472851,0.97514599,0,0)"><tspan
          sodipodi:role="line"
          id="tspan884"
-         x="26.845732"
-         y="145.80536"
+         x="2.4524035"
+         y="158.98663"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:87.89px;font-family:'Greek Diner Inline TT';-inkscape-font-specification:'Greek Diner Inline TT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:2.19726">A</tspan></text>
   </g>
 </svg>
