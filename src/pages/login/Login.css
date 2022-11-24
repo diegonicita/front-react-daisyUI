@@ -4,8 +4,7 @@
     box-sizing: border-box;
     font-family: roboto;    
     overflow-y: auto;
-    overflow-x: hidden;
-    color: black;
+    overflow-x: hidden;    
 }
 
 body {
@@ -14,11 +13,9 @@ body {
 
 .app {
     display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    position:relative;
+    height: 100vh;
+    width: auto;    
 }
 
 .web-preview-header {
@@ -56,8 +53,8 @@ body {
   .web-preview-header-logo {    
     width: 110px;
     height: 110px;
-    background: url('isologo.png') no-repeat 0;
-    background-size: 110px 110px;    
+    background: url('isologo-alcance.png') no-repeat 0;
+    background-size: 110px 110px;      
   }
 
 .web-preview-header-spacer {

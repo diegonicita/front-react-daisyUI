@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useUserStore } from '../../redux/hooks/useUser'
 import './Login.css'
-import { Canvas, useFrame, extend } from '@react-three/fiber'
-import { Box } from '../../components/Box'
+import { Canvas, extend } from '@react-three/fiber'
 import { Mark } from '../../components/Mark'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { Footer } from '../../components/Footer'
 
 extend({ OrbitControls });
 
@@ -13,6 +13,7 @@ export default function Login() {
   const { user, setUser } = useUserStore()
 
   return (
+    <>
     <div className="app">
       <div>
         <div className="web-preview-header">
@@ -106,7 +107,10 @@ export default function Login() {
             tempore quaerat fugit reiciendis doloribus quae.{' '}
           </div>
         </section>
+        <Footer />
       </div>
     </div>
+    
+    </>
   )
 }
