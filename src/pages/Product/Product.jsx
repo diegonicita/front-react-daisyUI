@@ -18,24 +18,6 @@ export default function Product() {
     <>
     <div className="login-container">
       <div>
-        <div className="web-preview-header">
-          <div className="color-stripe top-stripe">
-            <div
-              className="color-stripe-bar"
-              style={{ backgroundColor: 'rgb(255, 192, 14)' }}
-              ></div>
-            <div
-              className="color-stripe-bar"
-              style={{ backgroundColor: 'rgb(238, 77, 48)' }}
-            ></div>
-            <div
-              className="color-stripe-bar"
-              style={{ backgroundColor: 'rgb(0, 168, 152)' }}
-            ></div>
-          </div>
-          <div className="web-preview-header-logo"></div>
-          <div className="web-preview-header-spacer"></div>
-        </div>
         <section className="main-section"
           style={{
             display: 'flex',
@@ -117,9 +99,7 @@ export default function Product() {
             voluptatem provident quia libero. Natus dolore provident ad sunt
             tempore quaerat fugit reiciendis doloribus quae.{' '}
           </div>
-        </section>
-        <Outlet />
-        <Footer />
+        </section>        
       </div>
     </div>
     

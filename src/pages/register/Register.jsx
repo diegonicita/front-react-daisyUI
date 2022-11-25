@@ -4,7 +4,6 @@ import { useUserStore } from '../../redux/hooks/useUser'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import { Link } from 'react-router-dom'
-import { Header } from '../../components/Header'
 import '../Login/Login.css'
 
 export default function Register() {
@@ -62,8 +61,7 @@ export default function Register() {
 
   return (
     <div className="login-container">
-      <div>
-        <Header />
+      <div>        
         <section className="login-main-section">
           <form onSubmit={handleSubmit} className="login-form">
             <div className="title">Sign Up</div>
@@ -110,7 +108,7 @@ export default function Register() {
             <br />
             <p>
               ¿Ya tienes una cuenta?<span> </span>
-              <Link to="/login">Logueate</Link>
+              <Link to="/root/login">Logueate</Link>
             </p>
           </form>
         </section>
