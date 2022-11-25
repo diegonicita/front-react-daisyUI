@@ -4,8 +4,8 @@ import { useUserStore } from '../../redux/hooks/useUser'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import { Link } from 'react-router-dom'
-import Header from '../../components/Header'
-import '../login/Login.css'
+import { Header } from '../../components/Header'
+import '../Login/Login.css'
 
 export default function Register() {
   const initialValues = {

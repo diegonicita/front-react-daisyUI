@@ -1,7 +1,7 @@
 import React from 'react'
 import './Header.css'
 
-function Header() {
+export const Header = () => {
   return (
     <div className="web-header">
       <div className="color-stripe top-stripe">
@@ -23,5 +23,3 @@ function Header() {
     </div>
   )
 }
-
-export default Header

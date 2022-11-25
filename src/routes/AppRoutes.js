@@ -1,27 +1,24 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
-import Home from '../pages/home/Home'
-import Login from '../pages/login/Login'
-import Register from '../pages/register/Register'
-import { useUserStore } from '../redux/hooks/useUser'
+import Root from '../pages/Root/Root'
+import Home from '../pages/Home/Home'
+import Login from '../pages/Login/Login'
+import Register from '../pages/Register/Register'
+import Product from '../pages/Product/Product'
+import Error404 from '../pages/Error404/Error404'
 
-export const AppRoutes = () => {  
-  const { user, setUser } = useUserStore()
+import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 
-  return (
-    <Routes>
-      {user && (
-        <>
-          <Route path="/" element={<Home />} />         
-          <Route path="/*" element={<Navigate to="/" />} />
-        </>
-      )}
-      {user === null && (
-        <>
-          <Route path="/" element={<Login />}></Route>
-          <Route path="/register" element={<Register />}></Route>
-          <Route path="/*" element={<Navigate to="/" />} />
-        </>
-      )}
-    </Routes>
+export const AppRoutes = () => {
+  return createBrowserRouter(
+    createRoutesFromElements(
+      <>
+      <Route path="/" element={<Home />} />        
+      <Route path="/*" element={<Error404 />} />        
+      <Route path="/root" element={<Root />}>
+        <Route path="product" element={<Product />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />        
+      </Route>
+      </>
+    )
   )
 }
