@@ -12,7 +12,7 @@ const WebHeader = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: rgba(38,38,38,1);
+  background-color: rgba(38,38,38,0.75);
 `
 
 const ColorStripe = styled.div`

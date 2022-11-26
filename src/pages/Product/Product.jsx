@@ -1,36 +1,25 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { useUserStore } from '../../redux/hooks/useUser'
 import { Link } from 'react-router-dom'
 import './Product.css'
 import { Canvas, extend } from '@react-three/fiber'
 import { Mark } from '../../components/Mark'
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { Footer } from '../../components/Footer'
-import { Outlet} from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
+import styled from 'styled-components'
 
-extend({ OrbitControls });
+extend({ OrbitControls })
 
-export default function Product() {    
-
+export default function Product() {
   const { user, setUser, setToken } = useUserStore()
 
   return (
-    <>
-    <div className="login-container">
-      <div>
-        <section className="main-section"
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: '100vw',
-            alignItems: 'center'
-          }}>
-            Main Section
-        </section>
-        <section className="main-section">
-          <div className="product-wrapper">
-            <div className="left-side">
-              <div className="canvas-container">
+    <Container>              
+        <MainSection>
+          <ProductWrapper>
+            <LeftSide>
+              <CanvasContainer>
                 <Canvas
                   style={{
                     border: '1px solid rgba(0,0,0,0)',
@@ -65,44 +54,108 @@ export default function Product() {
                   />
                   <Mark />
                 </Canvas>
-              </div>
-            </div>
-            <div className="right-side">
-              <div className="product-title"> Amy Kilin Brown </div>
-              <div className="product-price"> $240.00 </div>
-              <div className="product-description-1">
+              </CanvasContainer>
+            </LeftSide>
+            <RightSide>
+              <ProductTitle> Amy Kilin Brown </ProductTitle>
+              <ProductPrice> $240.00 </ProductPrice>
+              <ProductDescription>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus
                 repudiandae veritatis neque quibusdam sint sunt nam at tenetur
                 eligendi praesentium reiciendis beatae cum eaque sit magni nisi,
                 deserunt, corrupti repellendus. Ab illum cupiditate nihil minus
-                voluptatem provident quia libero. Natus dolore provident
-              </div>
-              <br />
-              <div className="product-description-2">
+                voluptatem provident quia libero. Natus dolore provident.              
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus
                 repudiandae veritatis neque quibusdam sint sunt nam at tenetur
                 eligendi praesentium reiciendis beatae cum eaque sit magni nisi,
                 deserunt, corrupti repellendus. Ab illum cupiditate nihil minus
                 voluptatem provident quia libero. Natus dolore provident ad sunt
                 tempore quaerat fugit reiciendis doloribus quae.{' '}
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="description-section">
-        <div className="description-section-title">Description</div>
-          <div className="description-section-text">
+              </ProductDescription>
+            </RightSide>
+          </ProductWrapper>
+        </MainSection>
+        <DescriptionSection>
+          <DescriptionSectionTitle>Description</DescriptionSectionTitle>
+          <DescriptionSectionText>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus
             repudiandae veritatis neque quibusdam sint sunt nam at tenetur
             eligendi praesentium reiciendis beatae cum eaque sit magni nisi,
             deserunt, corrupti repellendus. Ab illum cupiditate nihil minus
             voluptatem provident quia libero. Natus dolore provident ad sunt
             tempore quaerat fugit reiciendis doloribus quae.{' '}
-          </div>
-        </section>        
-      </div>
-    </div>
-    
-    </>
+          </DescriptionSectionText>
+        </DescriptionSection>
+      
+    </Container>
   )
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+`
+const MainSection = styled.section({
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100vw',
+  alignItems: 'center'
+})
+
+const ProductWrapper = styled.div`
+  display: flex;  
+`
+
+const LeftSide = styled.div`
+  width: 370px;
+  flex-shrink: 0;
+  margin-left: 1rem;
+`
+const CanvasContainer = styled.div`
+width: 350px;
+  height: 350px;
+`
+const RightSide = styled.div`
+  width: 50%;
+`
+const ProductTitle = styled.div`
+font-size: 46px;
+  margin-top: -0.19em;
+  line-height: 1.2em;
+`
+const ProductPrice = styled.div`
+  font-size: 30px;
+  color: #FA4729;
+  margin-top: 0.5rem;
+  margin-bottom:0.5rem;
+  font-weight: bold;
+`
+
+const ProductDescription = styled.div`
+  font-weight: 100;
+  font-size: 18px;
+  line-height: 1.777777;
+`
+const DescriptionSection = styled.div`
+  padding: 3rem;
+  display: flex;  
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: 'center';  
+  `
+const DescriptionSectionTitle = styled.div`
+  font-size: 30px;
+  margin-top: -0.19em;
+  line-height: 1.2em;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+`
+const DescriptionSectionText = styled.div`
+font-weight: 100;
+  font-size: 18px;
+  line-height: 1.777777;
+`

@@ -74,7 +74,7 @@ export default function Login() {
         <Title>Log In</Title>
         <InputContainer>
           <Label htmlFor="email">
-            Correo
+            Email
             <Input
               type="text"
               name="email"
@@ -86,12 +86,12 @@ export default function Login() {
             />
           </Label>
           {errors.email && touched.email && (
-            <div className="error">{errors.email}</div>
+            <ErrorFront>{errors.email}</ErrorFront>
           )}
         </InputContainer>
-        <div className="input-container">
+        <InputContainer>
           <Label htmlFor="password">
-            Contraseña
+            Password
             <Input
               type="password"
               name="password"
@@ -103,16 +103,16 @@ export default function Login() {
             />
           </Label>
           {errors.password && touched.password && (
-            <div className="error-frontend">{errors.password}</div>
+            <ErrorFront>{errors.password}</ErrorFront>
           )}
-        </div>
+        </InputContainer>
         <ButtonContainer>
-          <Button type="submit" value="Enviar" />
+          <Button type="submit" value="Submit" />
         </ButtonContainer>
         {stateForm.error && <p> Credenciales invalidas</p>}
         <LinkContainer>
-          <div>¿Aún no tienes una cuenta?</div>
-          <Link to="/root/register">Crea una cuenta</Link>
+          <div>Don´t you have an account ?</div>
+          <Link to="/root/register">Sign Up</Link>
         </LinkContainer>
       </form>
     </Container>
@@ -123,13 +123,15 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  align-items: center;
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  align-items: center;  
+  background-color: white;
+  height: 100%;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
 `
 const Title = styled.div`
-  font-size: 25px;  
-  color: #00a898;
+  font-size: 2.2rem;  
+  color: black;
   text-align: center;
   font-weight: bold;
 `
@@ -145,16 +147,26 @@ const Label = styled.label`
   gap: 0.5rem;
   flex-direction: column;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  color: black;
 `
 const Input = styled.input`
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
-  font-weight: 100;
-  font-size: 1.2rem;
+  font-weight: 100;  
   padding: 1rem;
-`
+  border-radius: 4px;
+  height: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding-left: 5px;   
+`  
+const ErrorFront = styled.div({
+    color: 'rgb(0, 168, 152)',
+    fontSize: '1rem',
+    fontWeight: 'bold',
+    textAlign: 'center',    
+  })
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -170,6 +182,8 @@ const Button = styled.input`
   color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 100;
 `
 
 const LinkContainer = styled.div`
@@ -177,4 +191,11 @@ const LinkContainer = styled.div`
   justify-content: center;
   gap: 0.5rem;
   margin-top: 1rem;
+  color: black;
+
+  a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
 `

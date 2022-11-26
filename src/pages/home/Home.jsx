@@ -1,30 +1,60 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import logo from '../../assets/logo.png'
+import styled from 'styled-components'
 
 function Home() {
   
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
   return (
     <>
-      <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+      <LogoContainer>
         <img src={logo} width="300" alt="Alcance Tech" />
-      </div>
-      <div style={{ textAlign: 'center' }}>
-        <h1>Alcance Tech</h1>
-      </div>
-      <div style={{ textAlign: 'center' }}>
-        <h2>(Home.jsx)</h2>
-      </div>
-      <div style={{ textAlign: 'center' }}>
-        <button style={{ fontWeight: 'bold', margin: '5px', padding: '5px' }}
-                onClick={ ()=> navigate("root/login")}>
-          Log In
-        </button>
-      </div>
+      </LogoContainer>
+      <Title>
+        Alcance Tech
+      </Title>
+      <Subtitle>
+        Reaching Out For A Bright Future
+      </Subtitle>      
+      <ButtonContainer>
+        <Button onClick={ ()=> navigate("root/login")}>
+          Start
+        </Button>
+      </ButtonContainer>
     </>
   )
 }
+
+const LogoContainer = styled.div`
+  text-align: center;
+  margin-top: 2rem;
+`
+const Title = styled.div`
+text-align: center;
+margin: 0.5rem;
+font-size: 2rem;
+font-weight: bold;
+`
+const Subtitle = styled.div`
+text-align: center;
+margin: 0.5rem;
+`
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+const Button = styled.button`
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  background: #00a898;
+  border: 1px solid #00a898;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+`
+
 
 export default Home

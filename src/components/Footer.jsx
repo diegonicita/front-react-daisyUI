@@ -69,7 +69,7 @@ return (
 
 const Box = styled.div`
 padding: 80px 60px;
-background:  rgba(38,38,38,1);
+background:  rgba(38,38,38,0.75);
 position: relative;
 bottom: 0;
 width: 100%;
