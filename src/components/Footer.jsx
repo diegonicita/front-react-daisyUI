@@ -4,12 +4,9 @@ import styled from 'styled-components';
 export const Footer = () => {
 return (
 	<Box>
-	<h1 style={{ color: "rgb(0, 168, 152)",
-				textAlign: "center",
-				marginTop: "-50px",
-                marginBottom: "25px" }}>
+	<Title>
 		Alcance Tech: Reaching out for a bright future.
-	</h1>
+	</Title>
 	<Container>
 		<Row>
 		<Column>
@@ -76,20 +73,25 @@ background:  rgba(38,38,38,1);
 position: relative;
 bottom: 0;
 width: 100%;
-
-
 @media (max-width: 1000px) {
 	padding: 70px 30px;
-}
-`;
+};
+`
+
+const Title = styled.h1`
+color: rgb(0, 168, 152);
+text-align: center;
+margin-top: -50px;
+margin-bottom: 25px;
+`
+
 
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	max-width: 1000px;
-	margin: 0 auto;
-	/* background: red; */
+	margin: 0 auto;	
 `
 
 const Column = styled.div`
