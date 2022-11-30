@@ -70,7 +70,7 @@ export default function Login() {
 
   return (
     <Container>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Title>Log In</Title>
         <InputContainer>
           <Label htmlFor="email">
@@ -109,26 +109,36 @@ export default function Login() {
         <ButtonContainer>
           <Button type="submit" value="Submit" />
         </ButtonContainer>
-        {stateForm.error && <p> Credenciales invalidas</p>}
+        {stateForm.error && <ErrorBack> Invalid Credentials</ErrorBack>}
         <LinkContainer>
           <div>Don´t you have an account ?</div>
           <Link to="/root/register">Sign Up</Link>
+        </LinkContainer>        
+        <LinkContainer>          
+          <Link to="/root/product">(Test Product)</Link>
+          <Link to="/root/products">(Test Error 404)</Link>
         </LinkContainer>
-      </form>
+      </Form>
     </Container>
   )
 }
 
 const Container = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
-  width: 100vw;
-  align-items: center;  
-  background-color: white;
-  height: 100%;
-  padding-top: 2rem;
-  padding-bottom: 4rem;
+  min-height: 70vh;
+  align-items: center;    
+  padding-top: 5rem;
+  padding-bottom: 5rem;  
 `
+
+const Form = styled.form`
+display: flex;
+flex: 1;
+flex-direction: column;
+`
+
 const Title = styled.div`
   font-size: 2.2rem;  
   color: black;
@@ -162,10 +172,18 @@ const Input = styled.input`
   padding-left: 5px;   
 `  
 const ErrorFront = styled.div({
-    color: 'rgb(0, 168, 152)',
+    color: 'rgb(255, 0, 0)',
     fontSize: '1rem',
     fontWeight: 'bold',
     textAlign: 'center',    
+  })
+
+const ErrorBack = styled.div({
+    color: 'rgb(255, 0, 0)',
+    fontSize: '1rem',
+    fontWeight: 'bold',
+    textAlign: 'center',    
+    paddingTop: '1rem',
   })
 
 const ButtonContainer = styled.div`

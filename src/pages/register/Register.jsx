@@ -1,42 +1,55 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import { useUserStore } from '../../redux/hooks/useUser'
-import { useFormik } from 'formik'
-import * as yup from 'yup'
 import { Link } from 'react-router-dom'
+import Header from '../../components/Header'
+import { Canvas, extend } from '@react-three/fiber'
+import { Mark } from '../../components/Mark'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { Footer } from '../../components/Footer'
+import * as yup from 'yup'
+import { onSetToken } from '../../redux/slices'
+import axios from 'axios'
+import { useFormik } from 'formik'
+import styled from 'styled-components'
+
+extend({ OrbitControls })
 
 export default function Register() {
   const initialValues = {
     email: '',
-    password: ''
+    password: '',
+    repeatPassword: '',
   }
 
   const [stateForm, setStateForm] = useState({ loading: false, error: false })
-  const { user, setUser } = useUserStore()
+  const { user, setUser, setToken } = useUserStore()
 
   const validationSchema = yup.object().shape({
     email: yup
       .string()
-      .email('Debes ingresar un email valido')
+      .email('Invalid E-mail')
       .max(255)
-      .required('El campo no debe estar vacio'),
-    password: yup.string().required('El campo no debe estar vacio')
+      .required('This field is required and cannot be empty'),
+    password: yup.string().required('This field is required and cannot be empty'), 
+    repeatPassword: yup.string().required('This field is required and cannot be empty')
   })
   // .min(8, ({ min }) => `Tu password debe tener al menos ${min} caracteres`)
 
   const onSubmit = (e) => {
     setStateForm({ loading: true, error: false })
-    const { email, password } = values
+    const { email, password, repeatPassword } = values
     axios
       .post(`http://${process.env.REACT_APP_API_URL}/users/login`, {
         email,
-        password
+        password,
+        repeatPassword
       })
       .then((res) => {
         setStateForm({ loading: false, error: false })
         if (res.status === 200 && res.data.error !== true) {
           console.log(res)
           setUser(email)
+          setToken(res.data.token)
         } else {
           setStateForm((p) => {
             return { ...p, error: true }
@@ -59,59 +72,156 @@ export default function Register() {
     formik
 
   return (
-    <div className="login-container">
-      <div>
-        <section className="login-main-section">
-          <form onSubmit={handleSubmit} className="login-form">
-            <div className="title">Sign Up</div>
-            <div className="input-container">
-              <label htmlFor="email">
-                <strong>Correo</strong>
-                <input
-                  type="text"
-                  name="email"
-                  id="email"
-                  value={values.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  autoComplete="email"
-                />
-              </label>
-              {errors.email && touched.email && (
-                <div className="error-frontend">{errors.email}</div>
-              )}
-            </div>
-            <div className="input-container">
-              <label htmlFor="password">
-                <strong>Contraseña</strong>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  value={values.password}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  autoComplete="current-password"
-                />
-              </label>
-              {errors.password && touched.password && (
-                <div className="error-frontend">{errors.password}</div>
-              )}
-            </div>
-            <div className="button-container">
-              <input type="submit" value="Enviar" />
-            </div>
-            {stateForm.error && (
-              <p className="error-backend"> Credenciales invalidas</p>
-            )}
-            <br />
-            <p>
-              ¿Ya tienes una cuenta?<span> </span>
-              <Link to="/root/login">Logueate</Link>
-            </p>
-          </form>
-        </section>
-      </div>
-    </div>
+    <Container>
+      <Form onSubmit={handleSubmit}>
+        <Title>Sign Up</Title>
+        <InputContainer>
+          <Label htmlFor="email">
+            Email
+            <Input
+              type="text"
+              name="email"
+              id="email"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              autoComplete="email"
+            />
+          </Label>
+          {errors.email && touched.email && (
+            <ErrorFront>{errors.email}</ErrorFront>
+          )}
+        </InputContainer>
+        <InputContainer>
+          <Label htmlFor="password">
+            Password
+            <Input
+              type="password"
+              name="password"
+              id="password"
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              autoComplete="none"
+            />
+          </Label>
+          {errors.password && touched.password && (
+            <ErrorFront>{errors.password}</ErrorFront>
+          )}
+        </InputContainer>
+        <InputContainer>
+          <Label htmlFor="repeatPassword">
+            Repeat Password
+            <Input
+              type="password"
+              name="repeatPassword"
+              id="repeatPassword"
+              value={values.repeatPassword}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              autoComplete='none'
+            />
+          </Label>
+          {errors.repeatPassword && touched.repeatPassword && (
+            <ErrorFront>{errors.repeatPassword}</ErrorFront>
+          )}
+        </InputContainer>
+        <ButtonContainer>
+          <Button type="submit" value="Register" />
+        </ButtonContainer>
+        {stateForm.error && <p> Credenciales invalidas</p>}
+        <LinkContainer>
+          <div>Do you you have an account ?</div>
+          <Link to="/root/login">Sign In</Link>
+        </LinkContainer>
+      </Form>
+    </Container>
   )
 }
+
+const Container = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 70vh;
+  align-items: center;    
+  padding-top: 5rem;
+  padding-bottom: 5rem;  
+`
+
+const Form = styled.form`
+display: flex;
+flex: 1;
+flex-direction: column;
+`
+
+const Title = styled.div`
+  font-size: 2.2rem;  
+  color: black;
+  text-align: center;
+  font-weight: bold;
+`
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px;
+`
+
+const Label = styled.label`
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: black;
+`
+const Input = styled.input`
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  font-weight: 100;  
+  padding: 1rem;
+  border-radius: 4px;
+  height: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding-left: 5px;   
+`  
+const ErrorFront = styled.div({
+    color: 'rgb(255, 0, 0)',
+    fontSize: '1rem',
+    fontWeight: 'bold',
+    textAlign: 'center',    
+  })
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+const Button = styled.input`
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  background: #00a898;
+  border: 1px solid #00a898;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 100;
+`
+
+const LinkContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  color: black;
+
+  a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+`

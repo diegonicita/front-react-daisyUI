@@ -8,9 +8,9 @@ function Home() {
   const navigate = useNavigate(); 
 
   return (
-    <>
+    <Container>
       <LogoContainer>
-        <img src={logo} width="300" alt="Alcance Tech" />
+        <img src={logo} width="350" alt="Alcance Tech" />
       </LogoContainer>
       <Title>
         Alcance Tech
@@ -23,23 +23,31 @@ function Home() {
           Start
         </Button>
       </ButtonContainer>
-    </>
+    </Container>
   )
 }
 
+const Container = styled.div`
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  flex-direction: column;
+`
+
 const LogoContainer = styled.div`
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 6rem;
 `
 const Title = styled.div`
 text-align: center;
-margin: 0.5rem;
-font-size: 2rem;
+margin: 0.75rem;
+font-size: 3rem;
 font-weight: bold;
 `
 const Subtitle = styled.div`
 text-align: center;
-margin: 0.5rem;
+margin: 0.75rem;
+font-size: 1.5rem;
 `
 const ButtonContainer = styled.div`
   display: flex;
@@ -48,13 +56,15 @@ const ButtonContainer = styled.div`
 const Button = styled.button`
   margin-top: 10px;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 1.5rem;
   background: #00a898;
   border: 1px solid #00a898;
   color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
+&:hover {
+  background: black;
+}
 `
-
 
 export default Home
