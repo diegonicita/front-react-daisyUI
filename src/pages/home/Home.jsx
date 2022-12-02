@@ -10,7 +10,7 @@ function Home() {
   return (
     <Container>
       <LogoContainer>
-        <img src={logo} width="350" alt="Alcance Tech" />
+        <img src={logo} width="300" alt="Alcance Tech" />
       </LogoContainer>
       <Title>
         Alcance Tech
@@ -56,7 +56,7 @@ const ButtonContainer = styled.div`
 const Button = styled.button`
   margin-top: 10px;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   background: #00a898;
   border: 1px solid #00a898;
   color: #fff;
@@ -64,6 +64,7 @@ const Button = styled.button`
   border-radius: 5px;
 &:hover {
   background: black;
+  border: 1px solid black;
 }
 `
 

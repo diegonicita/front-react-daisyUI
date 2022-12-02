@@ -1,18 +1,10 @@
 import React, { useState } from 'react'
 import { useUserStore } from '../../redux/hooks/useUser'
 import { Link } from 'react-router-dom'
-import Header from '../../components/Header'
-import { Canvas, extend } from '@react-three/fiber'
-import { Mark } from '../../components/Mark'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { Footer } from '../../components/Footer'
 import * as yup from 'yup'
-import { onSetToken } from '../../redux/slices'
 import axios from 'axios'
 import { useFormik } from 'formik'
 import styled from 'styled-components'
-
-extend({ OrbitControls })
 
 export default function Login() {
   const initialValues = {
@@ -202,6 +194,10 @@ const Button = styled.input`
   border-radius: 5px;
   font-size: 1.2rem;
   font-weight: 100;
+  &:hover {
+    background: black;
+    border: 1px solid black;
+          }
 `
 
 const LinkContainer = styled.div`
