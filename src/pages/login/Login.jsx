@@ -25,35 +25,40 @@ export default function Login() {
   })
   // .min(8, ({ min }) => `Tu password debe tener al menos ${min} caracteres`)
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     setStateForm({ loading: true, error: false })
     const { email, password } = values
-    axios
-      .post(`http://${process.env.REACT_APP_API_URL}/users/login`, {
+    
+    try {
+    const res = await axios.post(`http://${process.env.REACT_APP_API_URL}/users/login`, {
         email,
         password
-      })
-      .then((res) => {
-        setStateForm({ loading: false, error: false })
-        if (res.status === 200 && res.data.error !== true) {
-          console.log(res)
+      })    
+    setStateForm({ loading: false, error: false })    
+    if (res.data.status === 200 && res.data.error !== true) {
+          // console.log(res)
           setUser(email)
+          console.log(email)
           setToken(res.data.token)
-        } else {
-          setStateForm((p) => {
-            return { ...p, error: true }
-          })
-          setTimeout(() => {
-            setStateForm((p) => {
-              return { ...p, error: false }
-            })
-          }, 2000)
+          console.log(res.data.token)
         }
-      })
-      .catch((error) => {
+    if (res.data.status !== 200 && res.data.error === true)
+        {
+        // console.log(res)
+        setStateForm((p) => {
+        return { ...p, error: true }
+        })
+        setTimeout(() => {
+        setStateForm((p) => {
+        return { ...p, error: false }
+        })
+        }, 2000)
+         }      
+    } catch(e) {
+        console.log(e)
         setStateForm({ loading: false, error: true })
         setUser('')
-      })
+      }
   }
 
   const formik = useFormik({ initialValues, validationSchema, onSubmit })

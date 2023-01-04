@@ -22,6 +22,7 @@ export default function Register() {
   }
 
   const [stateForm, setStateForm] = useState({ loading: false, error: false })
+  const {serverMessage, setServerMessage } = useState("Credenciales Invalidas")
   const { user, setUser, setToken } = useUserStore()
 
   const validationSchema = yup.object().shape({
@@ -35,36 +36,46 @@ export default function Register() {
   })
   // .min(8, ({ min }) => `Tu password debe tener al menos ${min} caracteres`)
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     setStateForm({ loading: true, error: false })
-    const { email, password, repeatPassword } = values
-    axios
-      .post(`http://${process.env.REACT_APP_API_URL}/users/login`, {
+    const { email, password, repeatPassword } = values   
+    try { 
+    const res = await axios.post(`http://${process.env.REACT_APP_API_URL}/users/register`, {
         email,
         password,
         repeatPassword
-      })
-      .then((res) => {
-        setStateForm({ loading: false, error: false })
-        if (res.status === 200 && res.data.error !== true) {
+      })    
+    
+    console.log(res)
+    setStateForm({ loading: false, error: false })
+
+    // Si se pudo registrar: status 200 y sin errores //
+    if (res.status === 200 && res.data.error !== true) {
           console.log(res)
           setUser(email)
           setToken(res.data.token)
-        } else {
-          setStateForm((p) => {
+    }
+
+    // si el servidor detecto algun problema //
+    if (res.status !== 200 && res.data.error === true)
+        {
+        console.log(res)        
+        setStateForm((p) => {
             return { ...p, error: true }
           })
-          setTimeout(() => {
+        setTimeout(() => {
             setStateForm((p) => {
               return { ...p, error: false }
             })
           }, 2000)
         }
-      })
-      .catch((error) => {
+      
+      } 
+      catch(error) {
+        console.log("Error al llamar al Server: " + error)
         setStateForm({ loading: false, error: true })
         setUser('')
-      })
+      }
   }
 
   const formik = useFormik({ initialValues, validationSchema, onSubmit })
@@ -129,7 +140,7 @@ export default function Register() {
         <ButtonContainer>
           <Button type="submit" value="Register" />
         </ButtonContainer>
-        {stateForm.error && <p> Credenciales invalidas</p>}
+        {serverMessage && <p> {serverMessage} </p>}
         <LinkContainer>
           <div>Do you you have an account ?</div>
           <Link to="/root/login">Sign In</Link>

@@ -3,13 +3,17 @@ import { createSlice } from '@reduxjs/toolkit'
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-    user: null
+    user: null,
+    token: null
   },
   reducers: {
     onSetUser (state, action) {
       state.user = action.payload
+    },
+    onSetToken (state, action) {
+      state.token = action.payload
     }
   }
 })
 
-export const { onSetUser } = userSlice.actions
+export const { onSetUser, onSetToken } = userSlice.actions
