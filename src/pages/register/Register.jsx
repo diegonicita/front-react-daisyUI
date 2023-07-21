@@ -40,7 +40,7 @@ export default function Register() {
     setStateForm({ loading: true, error: false })
     const { email, password, repeatPassword } = values   
     try { 
-    const res = await axios.post(`http://${process.env.REACT_APP_API_URL}/users/register`, {
+    const res = await axios.post(`http://${process.env.REACT_APP_API_URL}/register`, {
         email,
         password,
         repeatPassword
