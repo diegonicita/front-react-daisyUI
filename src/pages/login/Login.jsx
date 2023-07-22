@@ -89,111 +89,87 @@ export default function Login() {
     formik
 
   return (
-    <Container>
-      <Form onSubmit={handleSubmit}>
-        <Title>Log In</Title>
-        <InputContainer>
-          <Label htmlFor="email">
-            Email
-            <Input
-              type="text"
-              name="email"
-              id="email"
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              autoComplete="off"
-            />
-          </Label>
-          {errors.email && touched.email && (
-            <ErrorFront>{errors.email}</ErrorFront>
-          )}
-        </InputContainer>
-        <InputContainer>
-          <Label htmlFor="password">
-            Password
-            <Input
-              type="password"
-              name="password"
-              id="password"
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              autoComplete="off"
-            />
-          </Label>
-          {errors.password && touched.password && (
-            <ErrorFront>{errors.password}</ErrorFront>
-          )}
-        </InputContainer>
-        <ButtonContainer>
-          <Button type="submit" value="Submit" />
-        </ButtonContainer>
-        {stateForm.backError && <ErrorBack>{stateForm.backMessage}</ErrorBack>}
-        {stateForm.backError === null && stateForm.backMessage !== null && (
-          <ErrorBack>{stateForm.backMessage}</ErrorBack>
-        )}
-        <LinkContainer>
-          <div>Don´t you have an account ?</div>
-          <Link to="/root/register">Sign Up</Link>
-        </LinkContainer>
-        <LinkContainer>
-          <Link to="/root/product">(Test Product)</Link>
-          <Link to="/root/products">(Test Error 404)</Link>
-        </LinkContainer>
-      </Form>
-    </Container>
+    <>
+      <div className="hero min-h-screen bg-base-200">
+        <div className="hero-content flex-col lg:flex-row-reverse">
+          <div className="text-center lg:text-left">
+            <h1 className="text-5xl font-bold">Login now!</h1>
+            <p className="py-6">
+              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
+              et a id nisi.
+            </p>
+
+            <ErrorBack>{stateForm.backMessage}</ErrorBack>
+            <LinkContainer>
+              <Link to="/root/product">(Test Product)</Link>
+              <Link to="/root/products">(Test Error 404)</Link>
+            </LinkContainer>
+          </div>
+          <form
+            onSubmit={handleSubmit}
+            className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
+          >
+            <div className="card-body">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Email</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="email"
+                  className="input input-bordered"
+                  name="email"
+                  id="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  autoComplete="off"
+                />
+              </div>
+              {errors.email && touched.email && (
+                <ErrorFront>{errors.email}</ErrorFront>
+              )}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Password</span>
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  className="input input-bordered"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  autoComplete="off"
+                />
+                {errors.password && touched.password && (
+                  <ErrorFront>{errors.password}</ErrorFront>
+                )}
+              </div>
+              <LinkContainer>
+                <div>Don´t you have an account ?</div>
+                <Link to="/root/register">Sign Up</Link>
+              </LinkContainer>
+
+              <div className="form-control mt-6">
+                <button
+                  type="submit"
+                  value="Submit"
+                  className="btn btn-primary"
+                >
+                  Login
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
   )
 }
 
-const Container = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  min-height: 70vh;
-  align-items: center;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-`
-
-const Form = styled.form`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-`
-
-const Title = styled.div`
-  font-size: 2.2rem;
-  color: black;
-  text-align: center;
-  font-weight: bold;
-`
-const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 10px;
-`
-
-const Label = styled.label`
-  display: flex;
-  gap: 0.5rem;
-  flex-direction: column;
-  font-weight: bold;
-  font-size: 1.3rem;
-  color: black;
-`
-const Input = styled.input`
-  display: flex;
-  gap: 0.5rem;
-  flex-direction: column;
-  font-weight: 100;
-  padding: 1rem;
-  border-radius: 4px;
-  height: 25px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  padding-left: 5px;
-`
 const ErrorFront = styled.div({
   color: 'rgb(255, 0, 0)',
   fontSize: '1rem',
@@ -208,28 +184,6 @@ const ErrorBack = styled.div({
   textAlign: 'center',
   paddingTop: '1rem',
 })
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`
-
-const Button = styled.input`
-  margin-top: 10px;
-  cursor: pointer;
-  font-size: 15px;
-  background: #00a898;
-  border: 1px solid #00a898;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  font-weight: 100;
-  &:hover {
-    background: black;
-    border: 1px solid black;
-  }
-`
 
 const LinkContainer = styled.div`
   display: flex;

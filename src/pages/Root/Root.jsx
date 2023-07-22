@@ -8,9 +8,9 @@ function Root() {
   return (
     <>
       <Provider store={store}>  
-            <Header />      
+            {/* <Header />       */}
                 <Outlet />
-            <Footer />
+            {/* <Footer /> */}
       </Provider>
     </>
   )
