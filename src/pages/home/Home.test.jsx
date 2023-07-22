@@ -8,7 +8,7 @@ jest.mock('react-router-dom', () => ({
 
 test('renders learn react link', () => {
   render(<Home />);
-  const linkElement1 = screen.getByText(/Alcance Tech/i);
+  const linkElement1 = screen.getByText(/Webapp Tech/i);
   expect(linkElement1).toBeInTheDocument();
   const linkElement2 = screen.getByText(/Reaching Out For A Bright Future/i);
   expect(linkElement2).toBeInTheDocument();

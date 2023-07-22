@@ -17,7 +17,7 @@ export default function Login() {
     backError: null,
     backMessage: null,
   })
-  const { user, setUser, setToken } = useUserStore()
+  const { setUser, setToken } = useUserStore()
 
   const validationSchema = yup.object().shape({
     email: yup
@@ -141,11 +141,7 @@ export default function Login() {
                   </svg>
                   <span>{stateForm.backMessage}</span>
                 </div>
-              )}
-            <LinkContainer>
-              <Link to="/root/product">(Test Product)</Link>
-              <Link to="/root/products">(Test Error 404)</Link>
-            </LinkContainer>
+              )}            
           </div>
           <form
             onSubmit={handleSubmit}

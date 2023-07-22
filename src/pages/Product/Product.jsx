@@ -1,18 +1,15 @@
-import React, { useState } from 'react'
-import { useUserStore } from '../../redux/hooks/useUser'
-import { Link } from 'react-router-dom'
+import React from 'react'
+// import { useUserStore } from '../../redux/hooks/useUser'
 import './Product.css'
 import { Canvas, extend } from '@react-three/fiber'
 import { Mark } from '../../components/Mark'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { Footer } from '../../components/Footer'
-import { Outlet } from 'react-router-dom'
 import styled from 'styled-components'
 
 extend({ OrbitControls })
 
 export default function Product() {
-  const { user, setUser, setToken } = useUserStore()
+  // const { user, setUser, setToken } = useUserStore()
 
   return (
     <Container>              

@@ -1,16 +1,12 @@
-import { createRoot } from 'react-dom/client'
-import React, { useRef, useState } from 'react'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
+// import { createRoot } from 'react-dom/client'
+import React, { useRef } from 'react'
+import { useFrame, useThree } from '@react-three/fiber'
 import { useLoader } from '@react-three/fiber'
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 
 export const Mark = (props) => {
   // This reference gives us direct access to the THREE.Mesh object  
   const mark = useRef()
-  // Hold state for hovered and clicked events
-  const [hovered, hover] = useState(false)
-  const [clicked, click] = useState(false)
   // Subscribe this component to the render-loop, rotate the mesh every frame  
   // useFrame((state, delta) => (mark.current.rotation.y += 0.015))  
   

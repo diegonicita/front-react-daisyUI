@@ -1,13 +1,9 @@
 import React, { useState } from 'react'
 import { useUserStore } from '../../redux/hooks/useUser'
 import { Link } from 'react-router-dom'
-import Header from '../../components/Header'
-import { Canvas, extend } from '@react-three/fiber'
-import { Mark } from '../../components/Mark'
+import { extend } from '@react-three/fiber'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { Footer } from '../../components/Footer'
 import * as yup from 'yup'
-import { onSetToken } from '../../redux/slices'
 import axios from 'axios'
 import { useFormik } from 'formik'
 import styled from 'styled-components'
@@ -21,9 +17,9 @@ export default function Register() {
     repeatPassword: '',
   }
 
-  const [stateForm, setStateForm] = useState({ loading: false, error: false })
-  const {serverMessage, setServerMessage } = useState("Credenciales Invalidas")
-  const { user, setUser, setToken } = useUserStore()
+  const [setStateForm] = useState({ loading: false, error: false })
+  const {serverMessage } = useState("Credenciales Invalidas")
+  const { setUser, setToken } = useUserStore()
 
   const validationSchema = yup.object().shape({
     email: yup
