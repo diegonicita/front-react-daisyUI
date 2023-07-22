@@ -99,8 +99,49 @@ export default function Login() {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-
-            <ErrorBack>{stateForm.backMessage}</ErrorBack>
+            {stateForm.loading && (
+              <div className="flex justify-center items-center">
+                <span className="loading loading-spinner loading-md"></span>
+              </div>
+            )}
+            {stateForm.backError === null &&
+              stateForm.backMessage?.length > 0 && (
+                <div className="alert alert-success">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-current shrink-0 h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span>Login Exitoso!</span>
+                </div>
+              )}
+            {stateForm.backError !== null &&
+              stateForm.backMessage?.length > 0 && (
+                <div className="alert alert-error">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-current shrink-0 h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span>{stateForm.backMessage}</span>
+                </div>
+              )}
             <LinkContainer>
               <Link to="/root/product">(Test Product)</Link>
               <Link to="/root/products">(Test Error 404)</Link>
