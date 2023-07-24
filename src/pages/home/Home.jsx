@@ -1,9 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useUserStore } from '../../redux/hooks/useUser'
 import logo from '../../assets/logo-spider.png'
 
 function Home() {
   const navigate = useNavigate()
+  const { user, token } = useUserStore()
 
   return (
     <>
@@ -18,18 +20,30 @@ function Home() {
               et a id nisi.
             </p>
             <div className="join join-vertical lg:join-horizontal">
-              <button
-                className="btn join-item"
-                onClick={() => navigate('root/login')}
-              >
-                Sign In
-              </button>
-              <button
-                className="btn join-item"
-                onClick={() => navigate('root/register')}
-              >
-                Register
-              </button>
+              {!user && (
+                <>
+                  <button
+                    className="btn join-item"
+                    onClick={() => navigate('root/login')}
+                  >
+                    Sign In
+                  </button>
+                  <button
+                    className="btn join-item"
+                    onClick={() => navigate('root/register')}
+                  >
+                    Register
+                  </button>
+                </>
+              )}
+              {user && (
+                <button
+                  className="btn join-item"
+                  onClick={() => navigate('root/logout')}
+                >
+                  Sign Out
+                </button>
+              )}
               <button
                 className="btn join-item"
                 onClick={() => navigate('root/products')}

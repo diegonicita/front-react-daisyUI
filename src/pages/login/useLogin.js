@@ -1,28 +1,14 @@
 import { useState } from 'react'
-import axios from 'axios'
 import { useUserStore } from '../../redux/hooks/useUser'
-
-const Login = async ({ email, password }) => {
-  try {
-    const res = await axios.post(
-      `http://${process.env.REACT_APP_API_URL}/login`,
-      {
-        email,
-        password,
-      },
-    )
-
-    return res
-  } catch (error) {
-    return error
-  }
-}
+import { Login } from './api'
+import { useNavigate } from 'react-router-dom';
 
 export const useLogin = () => {
   const { setUser, setToken } = useUserStore()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [message, setMessage] = useState(null)
+  const navigate = useNavigate();
 
   async function submit(values) {
     setLoading(true)
@@ -30,14 +16,14 @@ export const useLogin = () => {
     setLoading(false)
 
     if (res && res.data && res.data.status === 200 && res.data.error !== true) {
-      setUser(res.data.email)
-      setToken(res.data.token)
-      console.log(res.data.token)
       setError(null)
       setMessage('Login Exitoso')
       setTimeout(() => {
         setError(null)
         setMessage(null)
+        setUser(res.data.email)
+        setToken(res.data.token)        
+        navigate('/root/product');
       }, 2000)
     }
     if (res && res.data && res.data.status !== 200 && res.data.error === true) {

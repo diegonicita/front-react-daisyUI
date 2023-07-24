@@ -1,6 +1,5 @@
 import React from 'react'
 // import { useUserStore } from '../../redux/hooks/useUser'
-import './Product.css'
 import { Canvas, extend } from '@react-three/fiber'
 import { Mark } from '../../components/Mark'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
